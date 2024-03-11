@@ -1,25 +1,22 @@
-const express = require('express');
+// const express = require('express');
+// const todosRoutes = require ('./routes/todos.routes')
+
+import express from "express"; // open package.json // set a type to module under "main" //
+import bodyParser from "body-parser";
+import todosRoutes from "./routes/todos.routes.js"
 
 // 2 // Create An Express App //
 const app = express();
 
-// 4 // Define Your Route //
-app.get('/', (req, res) => {
-    // console.log(req.headers, req.query);
-    res.send("Relax!");
-});
+// Apply middlewares // npm i body-parser
+app.use(bodyParser.json());
+
+// Use routes
+app.use(todosRoutes);
 
 
-app.get('/ping', (req, res) => {
-    res.send("Ping Pong!");
-});
 
-app.get('/file', (req, res) => {
-    console.log(__dirname);
-    res.sendFile(__dirname + "/index.html");
-});
-
-// This is for when import is used //
+// This is for when import is used // 
 // app.get('/file', (req, res) => {
 //     console.log(process.cwd);
 //     res.sendFile(process.cwd() + "/index.html");
