@@ -3,6 +3,7 @@
 
 import express from "express"; // open package.json // set a type to module under "main" //
 import bodyParser from "body-parser";
+import cors from "cors";
 import todosRoutes from "./routes/todos.routes.js"
 
 // 2 // Create An Express App //
@@ -10,6 +11,8 @@ const app = express();
 
 // Apply middlewares // npm i body-parser
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(cors());
 
 // Use routes
 app.use(todosRoutes);
